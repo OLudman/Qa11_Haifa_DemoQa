@@ -13,11 +13,15 @@ public class AlertHelper extends HelperBase{
 
     public void selectItemAlert() {
         click(By.xpath("//a[@id='close-fixedban']"));
-        click(By.xpath("//h5[.='Alerts, Frame & Windows']"));
+        click(By.cssSelector(".category-cards div.card:nth-child(3)"));
     }
 
     public void selectAlerts(){
+//        click(By.xpath("//span[text()='Alerts']"));
         click(By.xpath("//*[text()='Alerts']"));
+//        click(By.cssSelector(".accordion div.element-group:nth-child(3)"));
+//        click(By.xpath("//div[@class='element-list collapse show']//li[@id='item-1']"));
+//        click(By.cssSelector(".accordion div.element-group:nth-child(3) li:nth-child(2)"));
     }
 
     public void clickAlert1(){
