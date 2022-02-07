@@ -2,9 +2,12 @@ package manager;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.Collection;
 
 public class AlertHelper extends HelperBase{
     public AlertHelper(WebDriver wd) {
@@ -17,6 +20,8 @@ public class AlertHelper extends HelperBase{
     }
 
     public void selectAlerts(){
+        JavascriptExecutor js = (JavascriptExecutor) wd;
+        js.executeScript("document.querySelector('footer').style.display='none';");
 //        click(By.xpath("//span[text()='Alerts']"));
         click(By.xpath("//*[text()='Alerts']"));
 //        click(By.cssSelector(".accordion div.element-group:nth-child(3)"));
@@ -53,5 +58,20 @@ public class AlertHelper extends HelperBase{
         String text = wd.findElement(By.id("confirmResult")).getText();
         System.out.println(text);
         return text;
+    }
+
+    public String getPromptResult() {
+        String text = wd.findElement(By.id("promptResult")).getText();
+        System.out.println(text);
+        return text;
+    }
+
+    public void enterText(String text) {
+        wd.switchTo().alert().sendKeys(text);
+
+    }
+
+    public void clickAlert4() {
+        click(By.id("promtButton"));
     }
 }

@@ -30,4 +30,13 @@ public class AlertTests extends TestBase{
         Assert.assertTrue(app.getAlert().getConfirmResult().contains("Cancel"));
     }
 
+    @Test
+    public void clickPromptBox(){
+        app.getAlert().clickAlert4();
+        app.getAlert().enterText("Accepted by Olga");
+        app.getAlert().clickConfirmButton("Ok");
+        Assert.assertTrue(app.getAlert().getPromptResult().contains("Accepted by Olga"));
+
+    }
+
 }
