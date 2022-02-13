@@ -1,8 +1,10 @@
 package manager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class HelperBase {
 
@@ -42,4 +44,22 @@ public class HelperBase {
         System.out.println(wd.findElement(locator).getText());
         return wd.findElement(locator).getText();
     }
+
+    public void hideFooter(){
+        JavascriptExecutor executor = (JavascriptExecutor)this.wd;
+        executor.executeScript("document.querySelector('footer').style.display='none';");
+    }
+
+    public void hideAds(){
+        click(By.id("close-fixedban"));
+    }
+
+    public void select(By locator, String option){
+        //tagName select
+        Select select = new Select(wd.findElement(locator));
+        select.selectByValue(option);
+        //select.selectByIndex(2);
+        //select.selectByVisibleText(option);
+    }
+
 }

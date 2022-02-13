@@ -9,10 +9,15 @@ public class ApplicationManager {
 
     WebDriver wd;
     AlertHelper alert;
+    SelectHelper select;
 
 
     public AlertHelper getAlert() {
         return alert;
+    }
+
+    public SelectHelper getSelect() {
+        return select;
     }
 
     public void init(){
@@ -21,8 +26,7 @@ public class ApplicationManager {
         wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         wd.manage().window().maximize();
         alert = new AlertHelper(wd);
-
-
+        select = new SelectHelper(wd);
     }
     public void stop(){
         wd.quit();
